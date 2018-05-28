@@ -4,53 +4,48 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'index'),
+  mode:'development',
+  entry: path.join(__dirname, 'src', 'renderer','index'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist','renderer')
   },
   module: {
     rules: [{
-      test: /.(jsx|js)$/,
-      include: [
-        path.resolve(__dirname, 'app')
-      ],
-      exclude: [
-        path.resolve(__dirname, 'node_modules'),
-        path.resolve(__dirname, 'bower_components')
-      ],
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
       loader: 'babel-loader',
-      query: {
-        presets: ['es2015']
-      }
     },{
       test:/\.(jpg|png|gif|svg)$/,
-      exclude: [
-        path.resolve(__dirname, 'node_modules'),
-        path.resolve(__dirname, 'bower_components')
-      ],
+      exclude: /node_modules/,
       loader:'file-loader'
     },{
       test:/\.(css)$/,
-      exclude: [
-        path.resolve(__dirname, 'node_modules'),
-        path.resolve(__dirname, 'bower_components')
-      ],
-      loader: [
-        'style-loader',
-        'css-loader'
+      exclude: /node_modules/,     
+      use: [
+        {
+          loader:'style-loader'
+        },
+        {
+          loader:'css-loader',
+          options:{
+            modules:true       //开启css modules
+          }
+        }
       ]
     }]
   },
   devServer:{
     contentBase: path.join(__dirname,"dist"),
     compress:true,
+    hot:true,
     port:9000
   },
   plugins:[
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title:'sakura'
+      title:'sakura',
+      template:'./src/renderer/index.html'
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
@@ -58,5 +53,5 @@ module.exports = {
   resolve: {
     extensions: ['.json', '.js', '.jsx', '.css']
   },
-  devtool: 'source-map'
+  devtool: 'eval-source-map'
 };

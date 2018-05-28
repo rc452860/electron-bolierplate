@@ -1,0 +1,50 @@
+.vpn_header{
+  padding:0 10px !important;
+  position: fixed;
+  width: 100%;
+  background: none;
+  border-bottom: 1px dotted #ccc;
+}
+.vpn_namespan{
+  vertical-align: middle;
+  padding-left: 10px;
+}
+.vpn_avatar{
+  float: left;
+}
+.vpn_acc_info{
+  float: right;
+  vertical-align: middle;
+}
+.vpn_item{
+  padding: 5px 10px;
+  /* border-bottom: 1px dashed #CCC; */
+  color:rgba(255,255,255,.6);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.vpn_item:hover{
+  color:rgb(255,255,255) !important;
+  background: rgba(0,0,0,.1) !important;
+}
+.vpn_item:nth-child(2n){
+  background: rgba(0,0,0,.05)
+}
+.vpn_item:after{
+  visibility: hidden;
+  display: block;
+  content: ' ';
+  height: 0;
+  clear: both;
+}
+.vpn_item p{
+  margin: 0px;
+  min-width: 1px;
+  min-height: 1.5em;
+}
+
+
+:global(.queue-anim-leaving){
+  position: absolute;
+  width: 100%;
+}
