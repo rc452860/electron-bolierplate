@@ -53,7 +53,7 @@ module.exports = {
     hot: true,
     port: 9000,
     before(app){
-      apiMocker(app,mock);
+      apiMocker(app,path.resolve(__dirname,'.mock'));
     }
   },
   plugins: [
