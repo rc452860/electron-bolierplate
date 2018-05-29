@@ -3,25 +3,9 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server')
 const childProcess = require('child_process');
 const iconvLite = require('iconv-lite');
+const path = require('path')
 
 gulp.task('default', function () {
-    // // 将你的默认的任务代码放在这
-    // const webpackConfig = require('./webpack.config.js');
-    // const compiler = webpack(webpackConfig);
-    // const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-    //     stats: {
-    //         colors: true
-    //     },
-    //     open: true,
-    //     inline: true,
-    //     watchOptions: {
-    //         poll: true
-    //     }
-    // });
-    // console.log(devServerOptions)
-    // const server = new WebpackDevServer(compiler, devServerOptions)
-    // server.listen(webpackConfig.devServer.port)
-    // console.log("start")
     var webpack_dev_server = childProcess.spawn('.\\node_modules\\.bin\\webpack-dev-server', [
         '--open',
         '--config', 
@@ -36,3 +20,39 @@ gulp.task('default', function () {
         console.log(iconvLite.decode(data,'utf8'));
     })
 });
+
+gulp.task('electron-main',function(){
+    var webpack_dev_server = childProcess.spawn('.\\node_modules\\.bin\\webpack', [
+        '--config', 
+        'webpack.main.config.js'
+    ], {
+        shell:true
+    });
+    webpack_dev_server.stdout.on('data', function (data) {
+        console.log(iconvLite.decode(data,'utf8'));
+    })
+    webpack_dev_server.stderr.on('data', function (data) {
+        console.log(iconvLite.decode(data,'utf8'));
+    })
+    var electron = childProcess.spawn('node.exe',[
+        path.resolve(__dirname,'node_modules','electron','cli.js'),
+        path.resolve(__dirname,'dist','main','main.js'),
+    ])
+    gulp.watch(['./dist/main/main.js','./dist/main/**/*.js'],function(){
+        var killResult = electron.kill('SIGKILL');
+        console.log(`electron pid ${electron.pid}`)
+        console.log(`kill result:${killResult}`)
+        var electronInterval = setInterval(function(){
+            console.log(`is electron kiled:${electron.killed}`)
+            if(electron.killed){
+                electron = childProcess.spawn('node.exe',[
+                    path.resolve(__dirname,'node_modules','electron','cli.js'),
+                    path.resolve(__dirname,'dist','main','main.js'),
+                ])
+                clearInterval(electronInterval);
+            }
+        },500);
+        
+    })
+})
+

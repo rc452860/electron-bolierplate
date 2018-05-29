@@ -48,7 +48,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, 'dist','renderer'),
     compress: true,
     hot: true,
     port: 9000,
@@ -57,7 +57,7 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin([path.resolve(__dirname,'dist','renderer')]),
     new HtmlWebpackPlugin({
       title: 'sakura',
       template: './src/renderer/index.html'
