@@ -13,3 +13,5 @@
 
 脚手架还有很多待优化的地方，目前都是以子进程的方式启动webpack来编译renderer和main的js文件。
 应该会有更好的方式去修改
+
+webpack配置参考umi项目下的af-webpack 这个配置文件简略的从umi中爬下来的。
