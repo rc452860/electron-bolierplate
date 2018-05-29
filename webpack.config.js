@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const apiMocker = require('webpack-api-mocker');
 
 
 module.exports = {
@@ -50,7 +51,10 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
     hot: true,
-    port: 9000
+    port: 9000,
+    before(app){
+      apiMocker(app,mock);
+    }
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
