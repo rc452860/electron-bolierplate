@@ -7,6 +7,9 @@
 - [ ] main 进程待webpack编译后启动
 - [ ] 添加webpack编译完成事件
 
+### 2018年5月31日01:23:47
+electron BrowserWindow 关闭 最小化 拖拽功能
+
 ### 2018年5月30日01:25:42
 - renderer热更新 采用child process方式调用webpack
 - main 自动更新自动重启 同样采用renderer方式调用webpack打包代码用gulp监视dist下的main文件目录一旦文件发生改变便杀掉子进程重新启动一个新的electron进程 具体代码参考gulpfile.js
