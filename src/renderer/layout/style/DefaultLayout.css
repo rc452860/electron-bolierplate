@@ -1,4 +1,31 @@
-:global(.title){
+:global(.drag) {
     -webkit-user-select: none;
     -webkit-app-region: drag;
+}
+
+:global(.no_drag) {
+    -webkit-app-region: no-drag;
+}
+:global(.header){
+    z-index:1;
+    height:60px;
+    width:100%;
+    position:fixed;
+    top:0px;
+    background:#CCC;
+    padding:10px;
+}
+:global(.header_top){
+    display:flex;
+}
+:global(.header_title){
+    flex:1;
+    font-weight: bolder;
+    font-size: 16px;
+    text-align:middle;
+}
+:global(.header_button span){
+    padding-left:3px;
+    font-weight: bolder;
+    text-align:middle;
 }

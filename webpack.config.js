@@ -68,5 +68,6 @@ module.exports = {
   resolve: {
     extensions: ['.json', '.js', '.jsx', '.css']
   },
+  target:'electron-renderer',
   devtool: 'eval-source-map'
 };

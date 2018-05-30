@@ -4,6 +4,8 @@
   width: 100%;
   background: none;
   border-bottom: 1px dotted #ccc;
+  height:60px;
+  line-height: 60px;
 }
 .vpn_namespan{
   vertical-align: middle;
