@@ -7,6 +7,9 @@
 - [ ] main 进程待webpack编译后启动
 - [ ] 添加webpack编译完成事件
 
+### 2018年5月31日18:31:13
+修改用户界面head的布局方式,没有使用electron自带的`-webkit-app-region`来控制窗口拖拽。这样会导致无法在拖拽区域触发其他js事件列如onmouseenter等。并且右键点击还有个特别丑的system menu。
+
 ### 2018年5月31日01:23:47
 electron BrowserWindow 关闭 最小化 拖拽功能
 

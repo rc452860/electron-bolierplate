@@ -12,6 +12,7 @@ import {nameToColor} from '../utils/color'
 import styles from './styles/User.css';
 import {Scrollbars} from 'react-custom-scrollbars';
 import QueueAnim from 'rc-queue-anim';
+import DefaultLayout from './../layout/DefaultLayout';
 
 const {Header, Content} = Layout;
 
@@ -49,7 +50,6 @@ export default class User extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.scrollBarRef)
   }
 
   selectStart(e) {
@@ -117,7 +117,7 @@ export default class User extends React.Component {
       }} spin/>;
       const {height, width} = window.screen;
       return (
-        <div>
+        <DefaultLayout>
           <div
             style={{
             height,
@@ -135,7 +135,7 @@ export default class User extends React.Component {
             zIndex: 999
           }}
             size='large'/>
-        </div>
+        </DefaultLayout>
       )
     } else if (!user.username) {
       return (
@@ -149,25 +149,9 @@ export default class User extends React.Component {
         width: document.body.offsetWidth
       };
       return (
-        <Layout style={{
-          background: 'none'
-        }}>
-          <Header className={styles.vpn_header}>
-            <div className={styles.vpn_avatar}>
-              <Avatar style={{
-                backgroundColor: rgb
-              }}>
-                {this.props.user.username[0]}
-              </Avatar>
-              <span className={styles.vpn_namespan}>{this.props.user.username}</span>
-            </div>
-            <div className={styles.vpn_acc_info}>
-              <span>剩余时间: {user.remainTime}</span>
-            </div>
-          </Header>
-          <Content
+        <DefaultLayout>
+          <div
             style={{
-            marginTop: '64px',
             height: `${height - 64}px`
           }}>
             <Scrollbars autoHide autoHideTimeout={300} ref={this.scrollBarRef}>
@@ -181,8 +165,8 @@ export default class User extends React.Component {
                 {this.contentRender()}
               </QueueAnim>
             </Scrollbars>
-          </Content>
-        </Layout>
+          </div>
+        </DefaultLayout>
       )
     }
   }
