@@ -1,6 +1,11 @@
-
+@font-face{
+  font-family: "hiragino sans";
+  font-style: normal;
+  font-weight: 300;
+  src: url(./assets/font/hiragino_sans.woff) format("woff");
+}
 html, body, :global(#root) {
   height: 100%;
-  font-family:  "微软雅黑", "Microsoft YaHei", sans-serif;
+  font-family:  "hiragino sans";
 }
 

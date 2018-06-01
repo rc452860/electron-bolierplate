@@ -152,7 +152,7 @@ export default class User extends React.Component {
         <DefaultLayout>
           <div
             style={{
-            height: `${height - 64}px`
+            height: `${height - 60}px`
           }}>
             <Scrollbars autoHide autoHideTimeout={300} ref={this.scrollBarRef}>
               <QueueAnim

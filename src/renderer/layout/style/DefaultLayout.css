@@ -9,23 +9,24 @@
 :global(.header){
     height:60px;
     width:100%;
-    padding:10px;
+    padding:5px 10px;
     border-bottom: 1px #CCC dashed;
 }
 :global(.header_top){
     display:flex;
+    line-height: 25px;
+    height: 25px;
+    vertical-align:middle;
 }
 :global(.header_title){
     flex:1;
     font-weight: bolder;
     font-size: 14px;
-    vertical-align:middle;
     margin: 0px;
 }
 :global(.header_button span){
     padding-left:3px;
     font-weight: bolder;
-    vertical-align:middle;
     opacity : 0;
     transition: opacity  0.2s;
 }
@@ -35,10 +36,11 @@
 }
 :global(.head_foot){
     display: flex;
+    line-height: 25px;
+    height: 25px;
     vertical-align:middle;
 }
 :global(.head_info){
-    vertical-align:middle;
     font-weight: bolder;
     font-size: 14px;
     flex: 1;
